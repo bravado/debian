@@ -12,7 +12,9 @@ ENV LANG C.UTF-8
 ENV LANGUAGE C.UTF-8
 ENV LC_ALL C.UTF-8
 
-RUN localedef -i pt_BR -f UTF-8 pt_BR.UTF-8
+# Configure timezone and locale
+RUN echo "America/Sao_Paulo" > /etc/timezone; dpkg-reconfigure -f noninteractive tzdata \
+	&& localedef -i pt_BR -f UTF-8 pt_BR.UTF-8
 
 ADD etc /etc
 
