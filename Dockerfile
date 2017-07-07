@@ -17,6 +17,6 @@ RUN localedef -i pt_BR -f UTF-8 pt_BR.UTF-8
 ADD etc /etc
 
 RUN chmod +x /etc/entrypoint.sh \
-	&& mkdir /etc/entrypoint.d /etc/supervisor/conf.d
+	&& mkdir /etc/entrypoint.d
 
 ENTRYPOINT [ '/etc/entrypoint.sh' ]
