@@ -21,4 +21,4 @@ ADD etc /etc
 RUN chmod +x /etc/entrypoint.sh \
 	&& mkdir /etc/entrypoint.d
 
-ENTRYPOINT [ '/etc/entrypoint.sh' ]
+ENTRYPOINT '/etc/entrypoint.sh'
