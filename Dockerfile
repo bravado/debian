@@ -1,9 +1,9 @@
-FROM debian:jessie
+FROM debian:stretch
 
 RUN apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends --no-install-suggests -y \
-		gettext-base locales supervisor ca-certificates unzip curl \
+		gettext-base locales supervisor ca-certificates unzip curl gnupg \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/log/*.log
 
@@ -13,7 +13,7 @@ ENV LANGUAGE C.UTF-8
 ENV LC_ALL C.UTF-8
 
 # Configure timezone and locale
-RUN echo "America/Sao_Paulo" > /etc/timezone; dpkg-reconfigure -f noninteractive tzdata \
+RUN cp "/usr/share/zoneinfo/America/Sao_Paulo" /etc/localtime \
 	&& localedef -i pt_BR -f UTF-8 pt_BR.UTF-8
 
 ADD etc /etc
