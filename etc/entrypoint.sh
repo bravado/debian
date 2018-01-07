@@ -8,5 +8,10 @@ for i in /etc/entrypoint.d/*.sh; do
     bash $i
 done
 
-# Start supervisord
-exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+# Check for local config and start supervisord
+if [[ -f /etc/entrypoint.local.sh ]]; then
+	/usr/bin/supervisord -c /etc/supervisor/supervisord.conf &
+	source /etc/entrypoint.local.sh
+else
+	exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+fi
