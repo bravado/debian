@@ -4,6 +4,7 @@ RUN apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends --no-install-suggests -y \
 		gettext-base locales supervisor ca-certificates unzip curl gnupg \
+		apt-transport-https \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/log/*.log
 
