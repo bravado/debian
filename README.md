@@ -2,7 +2,7 @@
 
 Base debian image
 
-     FROM debian:jessie
+     FROM debian:stretch
 
 This image is based on `supervisord` for process management. 
 Additional configurations should be added to `/etc/supervisor/conf.d`
