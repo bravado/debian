@@ -34,6 +34,8 @@ RUN useradd -m -d /home/app -s /bin/bash app
 
 ADD etc /etc
 
+WORKDIR /home/app
+
 USER app
 
 ENTRYPOINT ["/usr/local/bin/supervisord"]
