@@ -16,7 +16,7 @@ RUN export DEBIAN_FRONTEND="noninteractive" \
 	&& cp "/usr/share/zoneinfo/America/Sao_Paulo" /etc/localtime \
 	&& localedef -i pt_BR -f UTF-8 pt_BR.UTF-8 \
 	&& apt-get install --no-install-recommends --no-install-suggests -y \
-		gettext-base ca-certificates unzip curl gnupg \
+		gettext-base ca-certificates unzip curl gnupg procps \
 		apt-transport-https \
 	&& apt-get clean \
 	&& find /var/log -type f -delete \

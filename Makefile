@@ -1,21 +1,18 @@
 .PHONY: init build push
 
 DOCKER_IMAGE ?= bravado/debian
+GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 
 default: build
 
-init:
-	$(eval GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD))
-
-build: init
+build:
 	docker build -t ${DOCKER_IMAGE}:${GIT_BRANCH} .
 
 push: build
 	docker push ${DOCKER_IMAGE}:${GIT_BRANCH}
 
 pull:
-	docker pull debian:stretch-slim
-	docker pull bravado/supervisord:latest
+	docker pull debian:${GIT_BRANCH}-slim
 
 run: PUID=$(shell id -u)
 run: PGID=$(shell id -g)
